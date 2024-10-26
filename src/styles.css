@@ -1,0 +1,183 @@
+:root {
+	--normal-color  : #A8A77A;
+	--fire-color    : #EE8130;
+	--water-color   : #6390F0;
+	--electric-color: #F7D02C;
+	--grass-color   : #7AC74C;
+	--ice-color     : #96D9D6;
+	--fighting-color: #C22E28;
+	--poison-color  : #A33EA1;
+	--ground-color  : #E2BF65;
+	--flying-color  : #A98FF3;
+	--psychic-color : #F95587;
+	--bug-color     : #A6B91A;
+	--rock-color    : #B6A136;
+	--ghost-color   : #735797;
+	--dragon-color  : #6F35FC;
+	--dark-color    : #705746;
+	--steel-color   : #B7B7CE;
+	--fairy-color   : #D685AD;
+}
+
+body {
+  padding: 60px;
+  background-color: #212121;
+  color: #faf1ff;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.pokemon_card {
+  background-color: #ebe9e9;
+  border-radius: 40px;
+  border: 0.5rem, solid, #faf1ff;
+  margin: 1rem 0.5rem 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  width: 15%;
+}
+
+.pokemon_card:hover {
+  transform: scale(105%);
+  transition: 0.1s;
+  background-color: #e3f7fd;
+}
+
+.pokemon_card:active {
+  transform: scale(95%);
+  background-color: rgb(152, 205, 255);
+  transition: 0.01s;
+  transform: translateY(4px);
+}
+
+.pokemon_card p {
+  color: #212121;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+
+.card_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  row-gap: 2rem;
+}
+
+.pokeImg {
+  width: 30%;
+  margin: 0;
+}
+
+
+.type {
+  border-radius: 5px;
+  border: white solid 0.15rem;
+  margin: 1rem 0 0.5rem 0;
+  display: inline-flex;
+  justify-content: center;
+  padding: 0.5rem;
+  width: 10rem;
+  font-size: 1.25rem;
+}
+
+
+.bug {
+  background-color: var(--bug-color);
+  color: #212121;
+}
+
+.dark {
+  background-color: var(--dark-color);
+  color: #212121;
+}
+
+.dragon {
+  background-color: var(--dragon-color);
+  color: #212121;
+}
+
+.electric {
+  background-color: var(--electric-color);
+  color: #212121;
+}
+
+.fairy {
+  background-color: var(--fairy-color);
+  color: #212121;
+}
+
+.fighting {
+  background-color: var(--fighting-color);
+  color: #212121;
+}
+
+.fire {
+  background-color: var(--fire-color);
+  color: #212121;
+}
+
+.flying {
+  background-color: var(--flying-color);
+  color: #212121;
+}
+
+.ghost {
+  background-color: var(--ghost-color);
+  color: #212121;
+}
+
+.grass {
+  background-color: var(--grass-color);
+  color: #212121;
+}
+
+.ground {
+  background-color: var(--ground-color);
+  color: #212121;
+}
+
+.ice {
+  background-color: var(--ice-color);
+  color: #212121;
+}
+
+.normal {
+  background-color: var(--normal-color);
+  color: #212121;
+}
+
+.poison {
+  background-color: var(--poison-color);
+  color: #212121;
+}
+
+.psychic {
+  background-color: var(--psychic-color);
+  color: #212121;
+}
+
+.rock {
+  background-color: var(--rock-color);
+  color: #212121;
+}
+
+.steel {
+  background-color: var(--steel-color);
+  color: #212121;
+}
+
+.water {
+  background-color: var(--water-color);
+  color: #212121;
+}
+
+
+.pokePage > p, .pokePage > div{
+  font-size: 2rem;
+}
