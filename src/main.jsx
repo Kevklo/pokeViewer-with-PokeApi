@@ -7,6 +7,6 @@ import './styles.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <PokedexApp />
-    {/* <PokemonPage id="1" name="Bulbasaur"/> */}
+    {/* <PokemonPage id="9" nombre="Blastoise"/> */}
   </StrictMode>,
 )

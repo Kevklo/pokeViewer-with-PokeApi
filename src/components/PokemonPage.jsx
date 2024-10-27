@@ -18,7 +18,7 @@ export const PokemonPage = ({id, nombre}) => {
         })}
       </div>
       {height && <p>Height: { height / 10 } Meters // Weight: { weight / 10 } Kilo </p>}
-      {ability && <p>Abilty: { ability.charAt(0).toUpperCase() + ability.slice(1) }</p>}
+      {ability && <p>Ability: { ability.charAt(0).toUpperCase() + ability.slice(1) }</p>}
     </section>
   )
 }
