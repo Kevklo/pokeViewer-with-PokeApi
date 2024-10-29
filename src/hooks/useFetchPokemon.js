@@ -3,39 +3,27 @@ import { getPokemonData } from '../helpers/getPokemonData';
 
 export const useFetchPokemon = ( order ) => {
   
-
-  const [ogNames, setOgNames] = useState([]);
-  const [ogImages, setOgImages] = useState([]);
-  const [names, setNames] = useState([]);
-  const [images, setImages] = useState([])
-
+  const [pokemonData, setPokemonData] = useState([]);
+  const [filteredPokemonData, setFilteredPokemonData] = useState([]);
 
   const getData = async () => {
-    const {names: newname, images: newimage} = await getPokemonData();
-      setOgNames(newname);
-      setOgImages(newimage);
-      setNames(newname);
-      setImages(newimage);
+    const {names, images, ids} = await getPokemonData();
+    const data = names.map((name, index) => ({
+      name,
+      image: images[index],
+      id: ids[index],
+    }))
+    setPokemonData(data);
   }
 
   const sortData = (order) => {
-    if (order == 'species') {
-
-      setNames(ogNames);
-      setImages(ogImages)
-
-    } else if (order == 'name'){
-
-      const data = ogNames.map((name, index) => ({
-        name,
-        image: ogImages[index],
-      }))
-
-      data.sort((a, b) => a.name.localeCompare(b.name));
-      setNames(data.map( i => i.name));
-      setImages(data.map( i => i.image));
-
-    }    
+    let sortedData;
+    if (order == 'name'){
+      sortedData = [...pokemonData].sort((a, b) => a.name.localeCompare(b.name));
+    }  else {
+      sortedData = [...pokemonData];
+    }
+    setFilteredPokemonData(sortedData);
   }
 
   useEffect( () => {
@@ -45,12 +33,17 @@ export const useFetchPokemon = ( order ) => {
 
   useEffect( () => {
       sortData(order);
-    }, [order]
+    }, [order, pokemonData]
   );
+  
+  const names  = filteredPokemonData.map((item) => item.name);
+  const images = filteredPokemonData.map((item) => item.image); 
+  const ids    = filteredPokemonData.map((item) => item.id); 
   
   return {
     names,
-    images
+    images,
+    ids
   }
 
 }

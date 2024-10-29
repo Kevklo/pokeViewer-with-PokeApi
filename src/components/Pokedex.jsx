@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { PokemonGrid } from './components/PokemonGrid'
-import { OrderSelector } from './components/OrderSelector';
+import { PokemonGrid } from './PokemonGrid'
+import { OrderSelector } from './OrderSelector';
 
-export const PokedexApp = () => {
+export const Pokedex = () => {
   const [order, setOrder] = useState('species');
 
   const onOrderChange = (o) => {
@@ -14,7 +14,6 @@ export const PokedexApp = () => {
       <h1>PokedexApp</h1>
       <OrderSelector onOrderChange={onOrderChange}/>
       <PokemonGrid order={ order }/>
-      {/* //TODO Individual pages for each pokemon */}
     </>
   )
 }

@@ -4,7 +4,10 @@ export const getPokemonData = async () => {
   const mapImages = (results) => {
     return results.map(result => {
       const pokemonId = result.url.split('/').filter(Boolean).pop();
-      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`;
+      return {
+        id: pokemonId,
+        image:`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonId}.png`,
+      }
     })
   }
 
@@ -12,11 +15,13 @@ export const getPokemonData = async () => {
   
   if(storedData){
     const results = JSON.parse(storedData);
-    const images = mapImages(results)
-    const names = results.map( result => result.name);
+    const ids     = mapImages(results).map(imageData => imageData.id)
+    const images  = mapImages(results).map(imageData => imageData.image)
+    const names   = results.map( result => result.name);
     return {
       images,
-      names
+      names,
+      ids
     }
   }
 
@@ -26,12 +31,14 @@ export const getPokemonData = async () => {
 
   localStorage.setItem('datos de pokes', JSON.stringify(results));
 
-  const images = mapImages(results)
-
+  const images = mapImages(results);
   const names = results.map( result =>  result.name);
+  const ids = images.map(imageData => imageData.id)
+
   return{
-    images,
-    names
+    images: images.map(imageData => imageData.image),
+    names,
+    ids
   }
   
 }
