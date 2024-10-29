@@ -9,10 +9,10 @@ export const PokemonGrid = ({order}) => {
       {names.map((name, index) => {
         return (
         <Link to={`/pokemon/${ids[index]}`} key={name} className="pokemon_card">
-          {/* <div className="pokemon_card"> */}
+          
             <p>#{ids[index]}: {name.toUpperCase()}</p>
             <img draggable='false' src={images[index]} alt={name}/>
-          {/* </div> */}
+
          </Link>
         )}
       )}

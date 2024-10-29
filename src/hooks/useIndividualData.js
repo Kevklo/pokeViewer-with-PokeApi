@@ -1,55 +1,68 @@
 import { useEffect, useState } from "react";
 
 export const useIndividualData = ( id ) => {
-  const [data, setData] = useState({ types: [], abilities: [] });
-  const [mainAbility, setMainAbility] = useState('');
-  const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+  const [data, setData] = useState({
+    types: [],
+    abilities: [],
+    height: null,
+    weight: null,
+    name: '',
+  });
 
-  const storedData = localStorage.getItem(`poke${id}`)
+  const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 
-  const getStoredData = async () => 
-    {
-    const result = (JSON.parse(storedData));
-    setData(result);
-    setMainAbility(result.abilities[0]?.ability.name);
-    const {types, weight, height, name} = data;
-    console.log(data)
-    return{ 
-      ability: mainAbility,
-      height,
-      imgUrl,
-      name,
-      types,
-      weight
-    }}
+  
+  const loadStoredData = () => {
 
+      const parsedData = JSON.parse(localStorage.getItem(`poke${id}`));
+      setData(parsedData);
 
-  const fetchData = async () => {
-    const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
-    const result = await resp.json();
-    setData(result);
-    setMainAbility(result.abilities[0]?.ability.name);
-    localStorage.setItem(`poke${id}`, JSON.stringify(result));
   };
 
-  useEffect(() => {
-    if(storedData)
-    {  
-      getStoredData();
+  
+  const fetchDataFromAPI = async () => {
+    try {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
+      const result = await response.json();
+
+      setData({
+        height: result.height,
+        types: result.types,
+        weight: result.weight,
+        name: result.species.name,
+        ability: result.abilities[0]?.ability.name,
+      });
+
+      localStorage.setItem(`poke${id}`, JSON.stringify({
+        height: result.height,
+        types: result.types,
+        weight: result.weight,
+        name: result.species.name,
+        ability: result.abilities[0]?.ability.name,
+      }));
+      
+    } catch (error) {
+      console.error("Error fetching data from API:", error);
     }
-    else{
-      fetchData();
+  };
+
+
+  useEffect(() => {
+    if (localStorage.getItem(`poke${id}`)) {
+      loadStoredData();
+    } else {
+      fetchDataFromAPI();
     }
   }, [id]);
 
-  const {types, weight, height, name} = data;
+  const { types, weight, height, name, ability } = data;
 
-  return{ 
-    ability: mainAbility,
+  return {
+    ability,
     height,
     imgUrl,
     name,
     types,
-    weight
-  }
+    weight,
+  };
 }

@@ -9,9 +9,9 @@ import './styles.css'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
+  
     <StrictMode>
       <MainApp />
-      {/* <PokemonPage id="9" nombre="Blastoise"/> */}
     </StrictMode>
 
   </BrowserRouter>

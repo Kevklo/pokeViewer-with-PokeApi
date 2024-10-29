@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const Tipos = ( {types} ) => {
   return (  
   types?.map((type) => {
