@@ -7,9 +7,9 @@ export const MainApp = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={ <PokeViewer/> }/>
+        <Route path="/PokeViewer" element={ <PokeViewer/> }/>
         <Route path="/pokemon/:id" element={ <PokemonPage/> }/>
-        <Route path="/*" element={ <Navigate  to="/"/>}/>
+        <Route path="/*" element={ <Navigate  to="/PokeViewer"/>}/>
     </Routes>
     </>
   )
