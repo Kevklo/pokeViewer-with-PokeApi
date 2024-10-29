@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pokedex } from './components/Pokedex'
+import { PokeViewer } from './components/PokeViewer'
 import { PokemonPage } from './components/PokemonPage'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
@@ -7,7 +7,7 @@ export const MainApp = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={ <Pokedex/> }/>
+        <Route path="/" element={ <PokeViewer/> }/>
         <Route path="/pokemon/:id" element={ <PokemonPage/> }/>
         <Route path="/*" element={ <Navigate  to="/"/>}/>
     </Routes>

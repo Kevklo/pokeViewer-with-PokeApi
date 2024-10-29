@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Pokedex } from './components/Pokedex'
+import { PokeViewer } from './components/PokeViewer'
 import { PokemonPage } from './components/PokemonPage'
 import { BrowserRouter } from 'react-router-dom'
 import { MainApp } from './mainApp'

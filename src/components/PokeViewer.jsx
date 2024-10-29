@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { PokemonGrid } from './PokemonGrid'
 import { OrderSelector } from './OrderSelector';
 
-export const Pokedex = () => {
+export const PokeViewer = () => {
   const [order, setOrder] = useState('species');
 
   const onOrderChange = (o) => {
@@ -11,7 +11,7 @@ export const Pokedex = () => {
 
   return (
     <>
-      <h1>PokedexApp</h1>
+      <h1>PokeViewerApp</h1>
       <OrderSelector onOrderChange={onOrderChange}/>
       <PokemonGrid order={ order }/>
     </>
