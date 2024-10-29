@@ -1,18 +1,25 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { createHashRouter, RouterProvider} from 'react-router-dom'
 import { PokeViewer } from './components/PokeViewer'
 import { PokemonPage } from './components/PokemonPage'
-import { BrowserRouter } from 'react-router-dom'
-import { MainApp } from './mainApp'
-
 import './styles.css'
 
+const router = createHashRouter([
+  {
+    path:'/',
+    element: <PokeViewer />
+  },
+  {
+    path: 'pokemon/:id', 
+    element:  <PokemonPage/>
+  }
+
+])
+
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
   
     <StrictMode>
-      <MainApp />
+      <RouterProvider router={ router }/>
     </StrictMode>
-
-  </BrowserRouter>
 )
